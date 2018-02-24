@@ -1,0 +1,55 @@
+metadata {
+	definition (name: "LAN Handler V1", namespace: "LeeC77", author: "Lee Charlton") {
+	capability "Sensor"
+    attribute "hubInfo", "string"
+    attribute "sbsresponse", "string"
+
+    //... code removed //
+    
+    // added to handle SB DLNA responses //
+    attribute "dlnaresponse", "string"
+    
+	}
+    
+    // define tiles use attribute name as device.
+    // define the relationship between state and label.https://graph-eu01-euwest1.api.smartthings.com/ide/device/editor/65942be7-08eb-4105-b889-1af8b1daeccf#
+	tiles (scale: 2){
+    valueTile("hubInfo", "device.hubInfo", decoration: "flat", height: 2, width: 6, inactiveLabel: false, canChangeBackground: true) {
+            state "hubInfo", label:'${currentValue}'//, icon: "st.Office.office5"
+    } 
+        
+}
+	// Tile Layouts:
+	main(["hubInfo"])
+}
+
+
+def parse(description) {
+def processed = false
+
+//... code removed //
+
+//log.trace "LAN Handler ${description}"
+    	try {
+			    result = parseLanMessage(description)
+        	if ((result =~ /Logitech/) || (result =~ /xml/)) {
+        		processed = true
+    			  //log.trace"Response form Logitech Server"
+                sendEvent(name:"hubInfo", value:"DLNA Response")
+                }
+                sendEvent (name: "dlnaresponse", value:description)
+                //log.trace "DLNA Response= ${description}"
+			}
+        catch (Throwable tt) {
+        	sendEvent(name: "parseError", value: "$tt", description: description)
+			    throw tt
+      }
+      
+      //... code removed //
+      
+      if(processed == false){ //LC
+    	    log.trace "LAN slurper unexpected message ===>${description} \n\r ===> ${result}" //LC
+      } 
+}
+
+//... code removed //
