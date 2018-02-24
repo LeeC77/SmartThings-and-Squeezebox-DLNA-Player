@@ -1,6 +1,8 @@
 # SmartThings-and-Squeezebox-DLNA-Player
 Extends SmartThingsUle/DLNA-PLAYER to work with multiple Squeezeboxs
 
+If you use it please consider donating to my favourite charity: https://www.nowdonate.com/checkout/pv0j03m4s1o1x60o6bh2
+
 The motivation for this project was to get announcements form Squeezebox Players.
 
 This project allows the detection of Logitech Squeezeboxs that are running from a LMS with the plugin UPnP/DLNA Media Interface by Andy Grundman by extending the DLNA-PLAYER Smart App and  Device Handler https://github.com/SmartThingsUle/DLNA-PLAYER.
