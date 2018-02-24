@@ -1,11 +1,11 @@
 # SmartThings-and-Squeezebox-DLNA-Player
-Extends SmartThingsUle/DLNA-PLAYER to work with multiple Squeezeboxs
+Extends SmartThingsUle/DLNA-PLAYER to work with multiple Squeezeboxes
 
 If you use it please consider donating to my favourite charity: https://www.nowdonate.com/checkout/pv0j03m4s1o1x60o6bh2
 
 The motivation for this project was to get announcements form Squeezebox Players.
 
-This project allows the detection of Logitech Squeezeboxs that are running from a LMS with the plugin UPnP/DLNA Media Interface by Andy Grundman by extending the DLNA-PLAYER Smart App and  Device Handler https://github.com/SmartThingsUle/DLNA-PLAYER.
+This project allows the detection of Logitech Squeezeboxes that are running from a LMS with the plugin UPnP/DLNA Media Interface by Andy Grundman by extending the DLNA-PLAYER Smart App and  Device Handler https://github.com/SmartThingsUle/DLNA-PLAYER.
 
 The project has turned out to be a lot bigger than I thought.
 The issues That had to be overcome include
@@ -29,4 +29,5 @@ I have done some limited testing with Bubble UPnP Server (Android App) and this 
 For details on how to set this up see SmartThingsUle repository.
 I found that the 'Delay before msg' and 'Delay between actions' in the Squeeze box devices need to be set to 1 second.
 Don't forget to install the LAN Handler with a DNI set to the MAC of the device you are running your SBS on. Also set this LAN Handler in the smart App settings.
+
 The result is by no means polished, and I'm not much more than a tinkerer when it comes to coding so there are probably better ways of implementing some things, but we are all here to learn and progress.
