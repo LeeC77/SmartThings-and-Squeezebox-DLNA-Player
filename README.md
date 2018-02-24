@@ -5,18 +5,18 @@ If you use it please consider donating to my favourite charity: https://www.nowd
 
 The motivation for this project was to get announcements form Squeezebox Players.
 
-This project allows the detection of Logitech Squeezeboxes that are running from a LMS with the plugin UPnP/DLNA Media Interface by Andy Grundman by extending the DLNA-PLAYER Smart App and  Device Handler https://github.com/SmartThingsUle/DLNA-PLAYER.
+This project allows the detection of Logitech Squeezeboxes that are running from a LMS, with the plugin UPnP/DLNA Media Interface by Andy Grundman, by extending the DLNA-PLAYER Smart App and Device Handler https://github.com/SmartThingsUle/DLNA-PLAYER.
 
 The project has turned out to be a lot bigger than I thought.
-The issues That had to be overcome include
+The issues that had to be overcome include
 1. Allowing multiple devices for DLNA renderers on a single IP address.
 2. Setting the correct subscribe path.
 3. Returning replies to the correct player.
 
 Detected Squeezebox media renderers devices are made using the uuid not the IP address and port. The IP address and port are now device settings.
 The subscribe path is now modified, based on the detection of a 'http:' leader, to include the appropriate port and renderer identification (the SB Player MAC)
-I use a cheat to elicit a 'Set-Cookie' response from the SBS for the each particular device so that reply messages can be associated with the correct renderer. This is not fool proof but works for the main use cases. All the replies from the MAC address on which the SBS is running are received by a new device 'LAN Handler' that forwards it to the Media Render (Connect) Smart App which finds the Set-Cookie and forwards it on to the correct Media player Device (child device).
-There one specific line 242 of the smart App that returns an error under certain conditions, but it doesn't appear to prevent the sending of the event. Help greatly received
+I use a cheat to elicit a 'Set-Cookie' response from the SBS for each particular device so that reply messages can be associated with the correct renderer. This is not fool proof but works for the main use cases. All the replies from the MAC address on which the SBS is running are received by a new device 'LAN Handler' that forwards it to the Media Render (Connect) Smart App which finds the Set-Cookie and forwards it on to the correct Media player Device (child device).
+There is one specific line (242) of the smart App that returns an error under certain conditions, but it doesn't appear to prevent the sending of the event. Help greatly received.
 ' d.subscribeResp(response) // This line gives an error but sends anyway'
 
 I have included a simpler version of the LAN Handler Device as my LAN Handler manages several other devices running on the same RasPi as my SBS.
